@@ -7,9 +7,8 @@ class UpdateProfileRequest extends FromRequest
     public function rules()
     {
         return [
-            "name" => "",
-            "description" => "",
-            "image" => "image|max:5000|mimes:jpeg"
+            "name" => "required|min:6",
+            "description" => "required|min:6",
         ];
     }
 }

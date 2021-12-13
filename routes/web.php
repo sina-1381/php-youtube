@@ -17,12 +17,13 @@ use Laravel\Lumen\Routing\Router;
 
 
 $router->post("/register", "AuthController@Register");
-$router->post("/reset_password", "AuthController@ResetPasswordRequest");
-$router->post("/verify/email/reset_password", "AuthController@VerifyEmailResetPasswordRequest");
+$router->post("/reset_password", "AuthController@ResetPassword");
+$router->post("/verify/email/reset_password", "AuthController@VerifyEmailResetPassword");
 
 $router->group(['middleware' => 'auth', 'prefix' => '/profile'], function () use ($router) {
-    $router->post("/change_password", "AuthController@ChangePasswordRequest");
-    $router->post("/update", "ChannelsController@UpdateProfileRequest");
-    $router->post("/subscription", "SubscriptionController@SubscribeRequest");
+    $router->post("/change_password", "AuthController@ChangePassword");
+    $router->post("/update", "ChannelsController@UpdateProfile");
+    $router->post("/subscription", "SubscriptionController@Subscribe");
     $router->post("/upload/video", "VideoController@Upload");
+    $router->post("/upload/file", "FileController@Upload");
 });

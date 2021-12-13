@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticateContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizeContract;
 use Laravel\Passport\HasApiTokens;
 
 
-class Users extends Model implements AuthenticatableContract, AuthorizableContract
+class Users extends Model implements AuthenticateContract, AuthorizeContract
 {
     use HasApiTokens, Authenticatable, Authorizable;
 
@@ -41,6 +40,6 @@ class Users extends Model implements AuthenticatableContract, AuthorizableContra
 
     public function findForPassport($username)
     {
-        return $this->where([['username', '=', $username]])->first();
+        return $this->where([['username' , $username]])->first();
     }
 }

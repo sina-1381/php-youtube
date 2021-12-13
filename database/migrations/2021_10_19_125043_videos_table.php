@@ -16,7 +16,6 @@ class VideosTable extends Migration
         Schema::create("videos", function (Blueprint $table) {
             $table->id();
             $table->bigInteger("channels_id");
-            $table->string("title");
             $table->string("video");
             $table->string("description")->nullable();
             $table->timestamps();

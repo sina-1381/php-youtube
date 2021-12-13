@@ -9,7 +9,6 @@ class UploadVideosRequest extends FromRequest
         return [
             "title" => "required",
             "description" => "required",
-            "video" => "required|mimes:mp4"
         ];
     }
 }

@@ -41,8 +41,8 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     #curl iconv session
     #docker-php-ext-install pdo_mysql pdo_sqlite mysqli mcrypt gd exif intl xsl json soap dom zip opcache && \
     docker-php-ext-install pdo_mysql zip exif pcntl iconv pdo_pgsql gd soap mbstring
-RUN pecl install xdebug \
-        && docker-php-ext-enable xdebug
+#RUN pecl install xdebug \
+#        && docker-php-ext-enable xdebug \
 
 RUN pecl install redis \
     && docker-php-ext-enable redis
@@ -63,7 +63,8 @@ RUN echo "cgi.fix_pathinfo=0" > ${php_vars} &&\
     echo "post_max_size = 100M"  >> ${php_vars} &&\
     echo "variables_order = \"EGPCS\""  >> ${php_vars} && \
     echo "memory_limit = 128M"  >> ${php_vars}
-
+RUN apk upgrade -U \
+     && apk add ffmpeg
 # Add user for laravel application
 RUN addgroup -S www
 RUN adduser -G www -g "" -s /bin/sh -D www

@@ -13,7 +13,6 @@ class SubscriptionController extends Controller
         $userId = $request->user()->id;
         $user = Users::findOrFail($userId);
         $user->Users_Channels()->attach($request["channels_id"]);
-        //  $user->Users_Channels()->detach($request["channels_id"]);
         return response()->json("done");
     }
 }

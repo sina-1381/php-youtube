@@ -67,10 +67,10 @@ $app->singleton(
 |
 */
 
+$app->configure('laravel-ffmpeg');
 $app->configure('auth');
 $app->configure('mail');
-//$app->configure('cache');
-//$app->configure('database');
+$app->configure('cache');
 
 
 /*
@@ -111,7 +111,7 @@ $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Illuminate\Redis\RedisServiceProvider::class);
 $app->register(Urameshibr\Providers\FormRequestServiceProvider::class);
-
+$app->register(ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
